@@ -1,0 +1,48 @@
+# JailMonkeyEraser
+
+**JailMonkeyEraser** is a Frida script for iOS that bypasses jailbreak and dynamic instrumentation detection in apps using the popular JailMonkey, DetectFrida, and JailBrokenHelper libraries.
+
+## Features
+
+- Hooks and overrides all major JailMonkey jailbreak detection methods
+- Bypasses DetectFrida checks for Frida instrumentation
+- Disables custom jailbreak checks in JailBrokenHelper
+- Prints log messages for each bypassed method
+
+## Usage
+
+1. **Install Frida** on your computer and device.
+2. **Save the script** as `jailmonkeyeraser.js`.
+3. **Connect your jailbroken iOS device** and ensure Frida server is running.
+4. **Launch the target app with Frida:**
+
+   ```sh
+   frida -U -f <bundle_id> -l jailmonkeyeraser.js
+   ```
+
+   Replace `<bundle_id>` with the app’s bundle identifier (e.g., `com.example.app`).
+
+5. **Observe the logs** for `[Bypass]` messages confirming the hooks are active.
+
+## Example Output
+[Bypass] JailMonkey.isJailBroken() -> false
+[Bypass] DetectFrida.isJailBroken() -> false
+[Bypass] JailBrokenHelper.hasCydiaInstalled() -> false
+Jailbreak/Frida detection bypass hooks installed!
+
+
+## How It Works
+
+- Hooks Objective-C methods in JailMonkey, DetectFrida, and JailBrokenHelper.
+- Forces all jailbreak and Frida detection checks to return `false` (not jailbroken, not instrumented).
+- Allows full app functionality on jailbroken and instrumented devices.
+
+## Disclaimer
+
+This tool is intended for **educational and authorised security testing purposes only**.  
+Do not use on apps or devices without explicit permission.
+
+
+---
+
+**Happy testing!**
