@@ -25,10 +25,17 @@
 5. **Observe the logs** for `[Bypass]` messages confirming the hooks are active.
 
 ## Example Output
-[Bypass] JailMonkey.isJailBroken() -> false
-[Bypass] DetectFrida.isJailBroken() -> false
-[Bypass] JailBrokenHelper.hasCydiaInstalled() -> false
+Spawning `com.example.app`...                                  
 Jailbreak/Frida detection bypass hooks installed!
+Spawned `com.example.app`. Resuming main thread!               
+[iPhone::com.example.app ]-> [Bypass] JailBrokenHelper.hasCydiaInstalled() -> false
+[Bypass] JailBrokenHelper.hasUndecimusInstalled() -> false
+[Bypass] JailBrokenHelper.hasSileoInstalled() -> false
+[Bypass] JailBrokenHelper.hasZbraInstalled() -> false
+[Bypass] JailBrokenHelper.isContainsSuspiciousApps() -> false
+[Bypass] JailBrokenHelper.checkDYLD() -> false
+[Bypass] JailBrokenHelper.checkSuspiciousObjCClasses() -> false
+[Bypass] JailBrokenHelper.canEditSystemFiles() -> false
 
 
 ## How It Works
