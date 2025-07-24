@@ -10,3 +10,7 @@ This repository contains a collection of tools and scripts designed to assist in
 A Frida script to bypass jailbreak and dynamic instrumentation detection in iOS apps using JailMonkey, DetectFrida, and JailBrokenHelper libraries.
 
 More tools and scripts will be added over time.
+
+# Disclaimer
+This repository and its contents are intended for educational and authorised security testing purposes only.
+Do not use these tools on applications or devices without explicit permission.
