@@ -1,0 +1,51 @@
+LABiometricBypass
+LABiometricBypass is a Frida script designed to bypass biometric and passcode authentication prompts in iOS/macOS apps using the LocalAuthentication framework.
+
+Features
+Hooks and overrides canEvaluatePolicy:error: to always indicate authentication is available
+
+Hooks evaluatePolicy:localizedReason:reply: to automatically return a successful authentication result
+
+Works on apps using Objective-C runtime and the standard LocalAuthentication APIs
+
+Logs calls and bypass actions for monitoring during runtime
+
+Usage
+Install Frida on your computer and target device.
+
+Save the script as LABiometricBypass.js.
+
+Connect your jailbroken iOS/macOS device with Frida server running.
+
+Start the target app with Frida:
+frida -U -f <bundle_id_or_process> -l LABiometricBypass.js
+Watch the console output for confirmation logs indicating the bypass hooks are active.
+
+Example Output
+Spawning `com.example.app`...                                  
+[+] Frida biometric/passcode bypass hooks installed.
+Spawned `com.example.app`. Resuming main thread!               
+[iPhone::com.example.app ]-> [*] canEvaluatePolicy called with policy: 2
+[*] Bypassing canEvaluatePolicy – returning YES
+
+
+
+How It Works
+Uses Frida’s Objective-C API to hook key LAContext methods from the LocalAuthentication framework.
+
+Forces canEvaluatePolicy:error: to always return true, indicating biometrics/passcode is available.
+
+Overrides the callback in evaluatePolicy:localizedReason:reply: to immediately invoke success without user interaction.
+
+Suitable for apps relying on the standard iOS/macOS biometric and passcode API calls.
+
+Limitations
+Requires the target app to use Objective-C runtime (not pure Swift without ObjC bridging).
+
+Does not bypass custom biometric/passcode implementations outside LocalAuthentication framework.
+
+May not work on apps with advanced anti-tampering or runtime protection.
+
+Disclaimer
+This tool is intended solely for authorised security testing and educational purposes.
+Do not use without explicit permission on apps or devices you do not own or have consent to test.
